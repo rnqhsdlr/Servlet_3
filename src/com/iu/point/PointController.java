@@ -1,6 +1,8 @@
 package com.iu.point;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,17 +45,40 @@ public class PointController extends HttpServlet {
 		String path="";
 		
 		if(command.equals("/pointList")) {
-			System.out.println("list");
+			
+			
+			path="../WEB-INF/views/point/pointList.jsp";
+			
 		}else if (command.equals("/pointAdd")) {
-			System.out.println("add");
+			if(method.equals("POST")) {
+				
+			}else {
+				
+				path="../WEB-INF/views/point/pointAdd.jsp";
+			}
+			
 		}else if(command.equals("/pointMod")) {
-			System.out.println("mod");
+			if(method.equals("POST")) {
+				
+			} else {
+				
+				path="../WEB-INF/views/point/pointMod";
+			}
 		}else if (command.equals("/pointSelect")) {
-			System.out.println("select");
+			
+			path="../WEB-INF/views/point/pointSelect";
 		}else if (command.equals("/pointDelete")) {
 			System.out.println("del");
 		}else {
 			System.out.println("etc");
+		}
+		
+		//URL(path)
+		if (check) {
+			RequestDispatcher view = request.getRequestDispatcher(path);
+			view.forward(request, response);
+		}else {
+			response.sendRedirect(path);
 		}
 		
 		
