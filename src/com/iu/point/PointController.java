@@ -1,6 +1,7 @@
 package com.iu.point;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,13 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/PointController")
 public class PointController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private PointService pointService;
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
     public PointController() {
         super();
-        // TODO Auto-generated constructor stub
+        this.pointService = new PointService();
     }
 
 	/**
@@ -43,9 +45,12 @@ public class PointController extends HttpServlet {
 		
 		//path를 담을 변수
 		String path="";
-		
+		try {
 		if(command.equals("/pointList")) {
 			
+			
+				ArrayList<PointDTO> ar =pointService.pointList();
+				request.setAttribute("list", ar);
 			
 			path="../WEB-INF/views/point/pointList.jsp";
 			
@@ -62,17 +67,28 @@ public class PointController extends HttpServlet {
 				
 			} else {
 				
-				path="../WEB-INF/views/point/pointMod";
+				path="../WEB-INF/views/point/pointMod.jsp";
 			}
 		}else if (command.equals("/pointSelect")) {
+			int num = Integer.parseInt(request.getParameter("num"));
+			PointDTO pointDTO = pointService.pointSelect(num);
 			
-			path="../WEB-INF/views/point/pointSelect";
+			request.setAttribute("dto", pointDTO);
+			path="../WEB-INF/views/point/pointSelect.jsp";
+			
 		}else if (command.equals("/pointDelete")) {
-			System.out.println("del");
+			int num = Integer.parseInt(request.getParameter("num"));
+			int result = pointService.pointDelete(num);
+			check=false;
+			path = "./pointList";
+			
 		}else {
 			System.out.println("etc");
 		}
+		} catch (Exception e) {
 		
+			e.printStackTrace();
+		}
 		//URL(path)
 		if (check) {
 			RequestDispatcher view = request.getRequestDispatcher(path);
@@ -80,6 +96,7 @@ public class PointController extends HttpServlet {
 		}else {
 			response.sendRedirect(path);
 		}
+		
 		
 		
 		

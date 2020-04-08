@@ -36,14 +36,36 @@
 </nav>
 
 <div class="container">
-  <div class="jumbotron">
-    <h1>Bootstrap Tutorial</h1>      
-    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
-  </div>
-  <p>This is some text.</p>      
-  <p>This is another text.</p>      
+  <h1>Point Add Form</h1>
+  <form action="./pointAdd" method="post">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+    </div>
+    
+    <div class="form-group">
+      <label for="num">Num:</label>
+      <input type="text" class="form-control" id="num" placeholder="Enter Num" name="num">
+    </div>
+    
+    <div class="form-group">
+      <label for="kor">Kor:</label>
+      <input type="text" class="form-control" id="kor" placeholder="Enter Point" name="kor">
+    </div>
+    
+    <div class="form-group">
+      <label for="eng">Eng:</label>
+      <input type="text" class="form-control" id="eng" placeholder="Enter Point" name="eng">
+    </div>
+    
+    <div class="form-group">
+      <label for="math">Math:</label>
+      <input type="text" class="form-control" id="math" placeholder="Enter Point" name="math">
+    </div>
+   
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
 </div>
-
-	<h1>Point Add Form</h1>
+	
 </body>
 </html>
