@@ -63,7 +63,7 @@
       <input type="text" class="form-control" id="math" placeholder="Enter Point" name="math">
     </div>
    
-    <a href="./pointDelete?num=${dto.num}" class="btn btn-danger">Submit</a>
+    <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>
 	
