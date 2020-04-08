@@ -56,6 +56,8 @@ public class PointController extends HttpServlet {
 			
 		}else if (command.equals("/pointAdd")) {
 			if(method.equals("POST")) {
+				check=false;
+				path="./pointList";
 				
 			}else {
 				
