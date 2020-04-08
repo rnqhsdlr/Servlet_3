@@ -63,7 +63,7 @@
       <input type="text" class="form-control" id="math" placeholder="Enter Point" name="math">
     </div>
    
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-success">Submit</button>
   </form>
 </div>
 	
