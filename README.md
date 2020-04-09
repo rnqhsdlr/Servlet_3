@@ -2,6 +2,28 @@
  
  
 # 기능
+
+##Member
+- 회원 가입(insert)
+- 로그인 (select one)
+- 회원 수정 (update)
+- 회원 탈퇴(delete)
+- myPage
+
+## JSP
+- /WEB-INF/views/member/...
+
+URL
+/member/memberJoin		memberJoin.JSP		GET
+/member/memberJoin							POST
+/member/memberLogin		memberLogin.jsp		GET
+/member/memberLogin							POST
+/member/memberPage		memberPage.jsp		GET
+/member/memberUpdate	memberUpdate.jsp	GET
+/member/memberUpdate						POST
+/member/memberDelete						GET
+
+### point
 - point list 출력
 - point 등록
 - point 상세정보
