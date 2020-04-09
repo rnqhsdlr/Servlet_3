@@ -24,4 +24,4 @@
 - /point/pointMod	/					/	POST
 - /point/pointDelete/					/	GET
 
-# 
+# add Home1
