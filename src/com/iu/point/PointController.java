@@ -58,13 +58,13 @@ public class PointController extends HttpServlet {
 			if(method.equals("POST")) {
 				
 				PointDTO pointDTO = new PointDTO();		
-				
+				int result=0;
 				pointDTO.setName(request.getParameter("name"));
 				pointDTO.setNum(Integer.parseInt(request.getParameter("num")));
 				pointDTO.setKor(Integer.parseInt(request.getParameter("kor")));
 				pointDTO.setEng(Integer.parseInt(request.getParameter("eng")));
 				pointDTO.setMath(Integer.parseInt(request.getParameter("math")));
-				int result = pointService.pointAdd(pointDTO);
+				result = pointService.pointAdd(pointDTO);
 				String msg = "점수 등록 실패";
 				
 				if (result>0) {
@@ -89,8 +89,8 @@ public class PointController extends HttpServlet {
 				pointDTO.setKor(Integer.parseInt(request.getParameter("kor")));
 				pointDTO.setEng(Integer.parseInt(request.getParameter("eng")));
 				pointDTO.setMath(Integer.parseInt(request.getParameter("math")));
-				
-				int result = pointService.pointUpdate(pointDTO);
+				int result =0;
+				result = pointService.pointUpdate(pointDTO);
 				
 				String msg = "점수 수정 실패";
 				

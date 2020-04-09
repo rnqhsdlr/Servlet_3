@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +12,6 @@
 
 </head>
 <body>
-
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -31,29 +29,40 @@
       <li><a href="${pageContext.request.contextPath}/point/pointList">Point</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <c:if test="${empty member}">
-      <li><a href="${pageContext.request.contextPath }/member/memberJoin"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="${pageContext.request.contextPath }/member/memberLogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </c:if>
-      
-      <c:if test="${not empty member}">
+     
       <li><a href="${pageContext.request.contextPath }/member/memberPage"><span class="glyphicon glyphicon-user"></span> My Page</a></li>
       <li><a href="${pageContext.request.contextPath }/member/memberLogout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-      </c:if>
+      
     </ul>
   </div>
 </nav>
 
 <div class="container">
-  <div class="jumbotron">
-    <h1>Bootstrap Tutorial</h1>      
-    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
-  </div>
-  <p>This is some text.</p>      
-  <p>This is another text.</p>      
+	<div class="row">
+	<h1>My Page</h1>
+		<table class="table table-hover">
+			<tr>
+				<td>아이디</td>
+				<td>비밀번호</td>
+				<td>이름</td>
+				<td>전화번호</td>
+				<td>이메일</td>
+				<td>나이</td>
+			</tr>
+			
+			<tr>
+				<td>${member.memberId }</td>
+				<td>${member.memberPw }</td>
+				<td>${member.name }</td>
+				<td>${member.memberPhone }</td>
+				<td>${member.memberEmail }</td>
+				<td>${member.memberAge }</td>
+			</tr>
+		</table>
+		<a href="./memberUpdate?num=${member.memberId}" class="btn btn-primary">Update</a>
+	
+	</div>
 </div>
-
-	<h1>Add Point Branch</h1>
 
 </body>
 </html>

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,29 +30,49 @@
       <li><a href="${pageContext.request.contextPath}/point/pointList">Point</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <c:if test="${empty member}">
       <li><a href="${pageContext.request.contextPath }/member/memberJoin"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="${pageContext.request.contextPath }/member/memberLogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </c:if>
-      
-      <c:if test="${not empty member}">
-      <li><a href="${pageContext.request.contextPath }/member/memberPage"><span class="glyphicon glyphicon-user"></span> My Page</a></li>
-      <li><a href="${pageContext.request.contextPath }/member/memberLogout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-      </c:if>
     </ul>
   </div>
 </nav>
 
 <div class="container">
-  <div class="jumbotron">
-    <h1>Bootstrap Tutorial</h1>      
-    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
-  </div>
-  <p>This is some text.</p>      
-  <p>This is another text.</p>      
+  <h1>Member Join</h1>
+  <form action="./memberJoin" method="post">
+    <div class="form-group">
+      <label for="id">ID:</label>
+      <input type="text" class="form-control" id="id" placeholder="Enter ID" name="memberId">
+    </div>
+    
+    <div class="form-group">
+      <label for="pw">PW:</label>
+      <input type="password" class="form-control" id="pw" placeholder="Enter Password" name="memberPw">
+    </div>
+    
+    <div class="form-group">
+      <label for="name">NAME:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+    </div>
+    
+    <div class="form-group">
+      <label for="phone">PHONE:</label>
+      <input type="text" class="form-control" id="phone" placeholder="Enter PhoneNum" name="memberPhone">
+    </div>
+    
+    <div class="form-group">
+      <label for="email">EMAIL:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter Email" name="memberEmail">
+    </div>
+    
+    <div class="form-group">
+      <label for="age">AGE:</label>
+      <input type="text" class="form-control" id="age" placeholder="Enter Age" name="memberAge">
+    </div>
+   
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
 </div>
 
-	<h1>Add Point Branch</h1>
 
 </body>
 </html>
