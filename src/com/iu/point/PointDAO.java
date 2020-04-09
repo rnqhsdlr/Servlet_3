@@ -5,13 +5,42 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
+
 import com.iu.util.DBConnect;
 
 public class PointDAO {
 
 	//DAO(Data Access Object)
 	
+	public int pointMod(PointDTO pointDTO) throws Exception{
+		
+		int result = 0;
+		
+		Connection con = DBConnect.getConnect();
+		
+		String sql = "update point Set name=?, kor=?, eng=?, math=?, total=?, avg=? where num=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, pointDTO.getName());
+		st.setInt(2, pointDTO.getKor());
+		st.setInt(3, pointDTO.getEng());
+		st.setInt(4, pointDTO.getMath());
+		st.setInt(5, pointDTO.getTotal());
+		st.setDouble(6, pointDTO.getAvg());
+		st.setInt(7, pointDTO.getNum());
+		
+		result = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		return result;
+	}
+	
 	public int pointAdd(PointDTO pointDTO) throws Exception{
+		
+		int result = 0;
 		Connection con = DBConnect.getConnect();
 		
 		String sql = "insert into point values (?, ?, ?, ?, ?, ?, ?)";
@@ -26,7 +55,7 @@ public class PointDAO {
 		st.setInt(6, pointDTO.getTotal());
 		st.setDouble(7, pointDTO.getAvg());
 		
-		int result = st.executeUpdate();
+		result = st.executeUpdate();
 		
 		st.close();
 		con.close();
@@ -36,7 +65,7 @@ public class PointDAO {
 	}
 	
 	public int pointDelete(int num) throws Exception{
-		
+		int result=0;
 		Connection con = DBConnect.getConnect();
 		
 		String sql = "Delete point where num=?";
@@ -44,7 +73,7 @@ public class PointDAO {
 		
 		st.setInt(1, num);
 		
-		int result = st.executeUpdate();
+		result = st.executeUpdate();
 		
 		st.close();
 		con.close();
