@@ -25,7 +25,7 @@
 			<c:forEach items="${list}" var="dto">
 			<tr>
 				<td>${dto.num}</td>
-				<td><a href="./pointSelect?num=${dto.num}">${dto.name}</td>
+				<td><a href="./pointSelect?num=${dto.num}">${dto.name}</a></td>
 				<td>${dto.avg}</td>
 			</tr>
 			</c:forEach>

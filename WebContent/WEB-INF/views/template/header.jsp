@@ -22,6 +22,7 @@
           <li><a href="#">Page 1-3</a></li>
         </ul>
       </li>
+      <li><a href="${pageContext.request.contextPath}/notice/noticeList">Notice</a></li>
       <li><a href="${pageContext.request.contextPath}/point/pointList">Point</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -38,13 +39,6 @@
   </div>
 </nav>
 
-<div class="container">
-  <div class="jumbotron">
-    <h1>Bootstrap Tutorial</h1>      
-    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
-  </div>
-  <p>This is some text.</p>      
-  <p>This is another text.</p>      
-</div>
+
 </body>
 </html>
