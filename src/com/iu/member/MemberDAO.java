@@ -8,6 +8,47 @@ import com.iu.util.DBConnect;
 
 public class MemberDAO {
 	
+	public int memberUpdate(MemberDTO memberDTO) throws Exception{
+		Connection con = DBConnect.getConnect();
+		int result=0;
+		
+		String sql = "update member Set name=?, memberPhone=?, memberEmail=?, memberAge=? where memberId=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		
+		st.setString(1, memberDTO.getName());
+		st.setString(2, memberDTO.getMemberPhone());
+		st.setString(3, memberDTO.getMemberEmail());
+		st.setInt(4, memberDTO.getMemberAge());
+		st.setString(5, memberDTO.getMemberId());
+		
+		result = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		
+		
+		return result;
+	}
+	
+	public int memberDelete(MemberDTO memberDTO) throws Exception{
+		Connection con = DBConnect.getConnect();
+		int result=0;
+		String sql = "delete member where memberId=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, memberDTO.getMemberId());
+		result = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		
+		return result;
+		
+		
+	}
+	
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception{
 	
 		Connection con = DBConnect.getConnect();
