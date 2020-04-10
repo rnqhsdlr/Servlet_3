@@ -81,6 +81,7 @@ public class NoticeController extends HttpServlet {
 			int num = Integer.parseInt(request.getParameter("num"));
 			
 			NoticeDTO noticeDTO=noticeService.noticeSelect(num);
+			noticeService.hitUpdate(noticeDTO);
 			request.setAttribute("noticeDTO", noticeDTO);
 			
 			path="../WEB-INF/views/notice/noticeSelect.jsp";

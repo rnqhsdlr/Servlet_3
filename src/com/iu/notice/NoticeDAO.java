@@ -39,13 +39,15 @@ public class NoticeDAO {
 	
 	public int hitUpdate(NoticeDTO noticeDTO) throws Exception{
 		Connection con = DBConnect.getConnect();
-		String sql = "update notice set hit=?, where num=?";
+		String sql = "update notice set hit=? where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
+
+		st.setInt(1, noticeDTO.getHit()+1);
+		st.setInt(2, noticeDTO.getNum());
+		
 		
 		int result = st.executeUpdate();
 		
-		st.setInt(1, noticeDTO.getHit()+1);
-		st.setInt(2, noticeDTO.getNum());
 		
 		st.close();
 		con.close();
@@ -78,7 +80,7 @@ public class NoticeDAO {
 		
 		Connection con = DBConnect.getConnect();
 		
-		String sql = "select*from notice order by num asc";
+		String sql = "select*from notice order by num desc";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		
