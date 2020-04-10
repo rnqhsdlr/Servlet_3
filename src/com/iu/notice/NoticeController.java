@@ -79,12 +79,25 @@ public class NoticeController extends HttpServlet {
 		} else if(command.equals("/noticeSelect")) {
 			
 			int num = Integer.parseInt(request.getParameter("num"));
+			path="../WEB-INF/views/notice/noticeSelect.jsp";
+			if (num<1) {
+				num=1;
+			}
+			
+			
 			
 			NoticeDTO noticeDTO=noticeService.noticeSelect(num);
-			noticeService.hitUpdate(noticeDTO);
-			request.setAttribute("noticeDTO", noticeDTO);
+			if (noticeDTO!=null) {
+				noticeService.hitUpdate(noticeDTO);
+				request.setAttribute("noticeDTO", noticeDTO);
+			} else {
+				path="../WEB-INF/views/common/result.jsp";
+				request.setAttribute("result", "마지막 페이지입니다");
+				request.setAttribute("path", "../notice/noticeSelect?num="+(num-1));
+			}
 			
-			path="../WEB-INF/views/notice/noticeSelect.jsp";
+			
+			
 			
 		}
 		

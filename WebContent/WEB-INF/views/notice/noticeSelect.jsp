@@ -76,6 +76,13 @@
 </div>
 
 <script type="text/javascript">
+
+	$(".previous > a").on("click", function() {
+		if(${noticeDTO.num-1 eq 0}) {
+			alert("마지막 페이지입니다.");
+		}
+	})
+	
 	$("#mod").on("click", function() {
 		if(${member.memberId eq "admin"}){
 			location.href="./noticeUpdate";	
@@ -84,6 +91,8 @@
 		}
 		
 	})
+	
+	
 	
 	$("#del").on("click", function() {
 		if(${member.memberId eq "admin"}){
