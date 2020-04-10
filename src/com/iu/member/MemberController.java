@@ -130,18 +130,19 @@ public class MemberController extends HttpServlet {
 		} else if (command.equals("/memberUpdate")) {
 			if(method.equals("POST")) {
 				HttpSession session = request.getSession();
-				check=false;
-				path="../";
 				MemberDTO memberDTO = new MemberDTO();
 				memberDTO.setMemberId(request.getParameter("memberId"));
 				memberDTO.setName(request.getParameter("name"));
 				memberDTO.setMemberPhone(request.getParameter("memberPhone"));
 				memberDTO.setMemberEmail(request.getParameter("memberEmail"));
 				memberDTO.setMemberAge(Integer.parseInt(request.getParameter("memberAge")));
+				System.out.println(memberDTO.getMemberAge());
 				int result = memberService.memberUpdate(memberDTO);
 				if(result>0) {
 					session.setAttribute("member", memberDTO);
 				}
+				check=false;
+				path="../";
 			}else {
 				
 				path="../WEB-INF/views/member/memberUpdate.jsp";

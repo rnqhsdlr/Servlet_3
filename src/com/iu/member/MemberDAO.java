@@ -9,9 +9,9 @@ import com.iu.util.DBConnect;
 public class MemberDAO {
 	
 	public int memberUpdate(MemberDTO memberDTO) throws Exception{
-		Connection con = DBConnect.getConnect();
-		int result=0;
 		
+		int result=0;
+		Connection con = DBConnect.getConnect();
 		String sql = "update member Set name=?, memberPhone=?, memberEmail=?, memberAge=? where memberId=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
@@ -21,9 +21,9 @@ public class MemberDAO {
 		st.setString(3, memberDTO.getMemberEmail());
 		st.setInt(4, memberDTO.getMemberAge());
 		st.setString(5, memberDTO.getMemberId());
-		
+		System.out.println("dtd");
 		result = st.executeUpdate();
-		
+		System.out.println("asdf");
 		st.close();
 		con.close();
 		

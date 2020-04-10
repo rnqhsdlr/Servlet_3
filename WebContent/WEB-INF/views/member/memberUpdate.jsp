@@ -12,37 +12,54 @@
 <c:import url="../template/header.jsp"></c:import>
 
 <div class="container">
-  <h1>Member Join</h1>
-  <form action="./memberUpdate" method="post">
-    <div class="form-group">
-      <label for="id">ID:</label>
-      <input type="text" class="form-control" id="id" placeholder="Enter ID" name="memberId" readonly="readonly" value="${member.memberId }">
-    </div>
-    
-    
-    <div class="form-group">
-      <label for="name">NAME:</label>
-      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" value="${member.name }">
-    </div>
-    
-    <div class="form-group">
-      <label for="phone">PHONE:</label>
-      <input type="text" class="form-control" id="phone" placeholder="Enter PhoneNum" name="memberPhone" value="${member.memberPhone }">
-    </div>
-    
-    <div class="form-group">
-      <label for="email">EMAIL:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter Email" name="memberEmail" value="${member.memberEmail }">
-    </div>
-    
-    <div class="form-group">
-      <label for="age">AGE:</label>
-      <input type="text" class="form-control" id="age" placeholder="Enter Age" name="memberAge" value="${member.memberAge }">
-    </div>
-   
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
-</div>
+		<div class="row">
+			<form class="form-horizontal" action="./memberUpdate" method="post">
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="id">ID:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" value="${member.memberId}" id="id" readonly="readonly" placeholder="Enter ID" name="memberId">
+					</div>
+				</div>
+				
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="name">Name:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="name" value="${member.name}"; placeholder="Enter Name" name="name">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="email">Email:</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control" id="email" value="${member.memberEmail}" placeholder="Enter Email" name="memberEmail">
+					</div>
+				</div>				
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="phone">Phone:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="phone" value="${member.memberPhone}" placeholder="Enter Phone" name="memberPhone">
+					</div>
+				</div>		
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="age">Age:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="age" value="${member.memberAge}" placeholder="Enter Age" name="memberAge">
+					</div>
+				</div>				
+						
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-default">Submit</button>
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
 
 </body>
 </html>
