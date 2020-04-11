@@ -13,6 +13,19 @@ public class NoticeService {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public int noticeDelete(int num) throws Exception {
+		int result=noticeDAO.noticeDelete(num);
+		
+		return result;
+	}
+	
+	public int noticeUpdate(NoticeDTO noticeDTO) throws Exception {
+		
+		int result = noticeDAO.noticeUpdate(noticeDTO);
+		return result;
+	}
+	
+	
 	public int hitUpdate(NoticeDTO noticeDTO) throws Exception {
 		int result = noticeDAO.hitUpdate(noticeDTO);
 		return result;

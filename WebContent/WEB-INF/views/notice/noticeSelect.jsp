@@ -85,7 +85,7 @@
 	
 	$("#mod").on("click", function() {
 		if(${member.memberId eq "admin"}){
-			location.href="./noticeUpdate";	
+			location.href="./noticeUpdate?num="+${noticeDTO.num};	
 		} else {
 			alert("관리자만 가능합니다.")
 		}
@@ -96,7 +96,9 @@
 	
 	$("#del").on("click", function() {
 		if(${member.memberId eq "admin"}){
-			location.href="./noticeDelete";	
+			if(confirm("정말 삭제하시겠습니까?")){
+			location.href="./noticeDelete?num="+${noticeDTO.num};	
+			};
 		} else {
 			alert("관리자만 가능합니다.")
 		}

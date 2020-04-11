@@ -9,6 +9,42 @@ import com.iu.util.DBConnect;
 
 public class NoticeDAO {
 	
+	public int noticeDelete(int num) throws Exception {
+		int result =0;
+		
+		Connection con = DBConnect.getConnect();
+		String sql = "Delete notice where num=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setInt(1, num);
+		
+		result=st.executeUpdate();
+		
+		st.close();
+		con.close();
+		
+		return result;
+	}
+	
+	public int noticeUpdate(NoticeDTO noticeDTO) throws Exception {
+		
+		int result =0;
+		Connection con = DBConnect.getConnect();
+		String sql = "update notice set title=?, text=? where num=? ";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, noticeDTO.getTitle());
+		st.setString(2, noticeDTO.getText());
+		st.setInt(3, noticeDTO.getNum());
+		
+		result = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		return result;
+	}
+	
 	public NoticeDTO noticeSelect(int num) throws Exception{
 		Connection con = DBConnect.getConnect();
 		String sql = "select * from notice where num=?";

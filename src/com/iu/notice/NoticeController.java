@@ -95,10 +95,53 @@ public class NoticeController extends HttpServlet {
 				request.setAttribute("result", "마지막 페이지입니다");
 				request.setAttribute("path", "../notice/noticeSelect?num="+(num-1));
 			}
+				
+		} else if (command.equals("/noticeUpdate")) {
 			
+			if(method.equals("POST")) {
+				NoticeDTO noticeDTO = new NoticeDTO();
+				noticeDTO.setNum(Integer.parseInt(request.getParameter("num")));
+				noticeDTO.setTitle(request.getParameter("title"));
+				noticeDTO.setText(request.getParameter("text"));
+				int result = 0;
+				result = noticeService.noticeUpdate(noticeDTO);
+				path="../WEB-INF/views/common/result.jsp";
+				if (result>0) {
+					request.setAttribute("result", "수정 성공");
+					request.setAttribute("path", "../notice/noticeList");
+				} else {
+					request.setAttribute("result", "수정 실패");
+					request.setAttribute("path", "../notice/noticeList");
+				}
+				
+			}else {
+				int num = Integer.parseInt(request.getParameter("num"));
+				HttpSession session = request.getSession();
+				MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+				NoticeDTO noticeDTO = noticeService.noticeSelect(num);
+				
+				if (memberDTO.getMemberId().equals("admin")) {
+					request.setAttribute("noticeDTO", noticeDTO);
+					path="../WEB-INF/views/notice/noticeUpdate.jsp";
+				}
+				
+			}
+		} else if(command.equals("/noticeDelete")) {
+			int num = Integer.parseInt(request.getParameter("num"));
+			HttpSession session = request.getSession();
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 			
-			
-			
+			if (memberDTO.getMemberId().equals("admin")) {
+				int result = noticeService.noticeDelete(num);
+				path="../WEB-INF/views/common/result.jsp";
+				if(result>0) {
+					request.setAttribute("result", "삭제 성공");
+					request.setAttribute("path", "../notice/noticeList");
+				} else {
+					request.setAttribute("result", "삭제 실패");
+					request.setAttribute("path", "../notice/noticeList");
+				}
+			}
 		}
 		
 		} catch (Exception e) {
